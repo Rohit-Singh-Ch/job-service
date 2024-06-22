@@ -6,5 +6,23 @@ spring:
     url: jdbc:postgresql://localhost:5432/job-service
     username: job-service
     password: job-service
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 server:
   port: 8080
+  servlet:
+    context-path: /job-service
+
+batch:
+  scheduler:
+    schedule: "0/30 * * * * ?"
+    name: "JobService"
+    lock-at-least-for: "20s"
+    lock-at-most-for: "40s"
