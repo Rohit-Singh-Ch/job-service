@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: job-service
+  datasource:
+    name: job-service-ds
+    url: jdbc:postgresql://localhost:5432/job-service
+    username: job-service
+    password: job-service
